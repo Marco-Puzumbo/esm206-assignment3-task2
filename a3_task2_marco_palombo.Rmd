@@ -106,9 +106,8 @@ sw_skin_sep <- starwars %>%
            sep = ',',
            # merge everything after the first , into the second column
            extra = "merge",
-           # dod not remove` the original column
+           # do not remove the original column
            remove = FALSE)
-
   
 ```
 
@@ -144,7 +143,17 @@ In the code chunk below, starting from the `mpg` data create a new data frame ca
 
 ```{r}
 # Your code here: 
-
+# start with mpg data frame
+mpg_model_class <- mpg %>% 
+  # use unite to combine model and class into model_class
+  unite(col = model_class,
+        # define columns to be combined
+        c(model, class),
+        # separate with a -
+        sep = "-",
+        remove = FALSE
+        )
+  
 
 ```
 
