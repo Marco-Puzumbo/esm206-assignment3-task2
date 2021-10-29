@@ -60,7 +60,16 @@ Make sure to `View()` the resulting data frame (remember: run `View()` in the Co
 # Your code here: 
 
 # start with star warsdata set
-sw_split_name <- 
+sw_split_name <- starwars %>% 
+  
+  # split the name column
+  separate(col = name,
+           
+           # define two columns it will be split into
+           into = c("name_1", "name_2"),
+           
+           # separate by - symbol
+           sep = "-")
 
 ```
 
