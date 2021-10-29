@@ -105,8 +105,10 @@ Make sure to `View()` the resulting data frame (remember: run `View()` in the Co
 
 ```{r}
 # Your code here:
+
 # start from star wars data set
 sw_skin_sep <- starwars %>% 
+  
   # call separate and tell it to separate the skin_color column
   separate(col = skin_color, 
            # specify skin_1 and skin_2 as the two new column names
@@ -221,8 +223,11 @@ In the code chunk below, create a vector (using `c()`, as above) stored as `some
 # Your code here: 
 # create vector of stored dates from above
 some_dates <- c(11061972, 02142007,01301843)
+
+# convert to dates stored as some_dates_converted
 some_dates_converted <- mdy(some_dates)
 
+# check class
 class(some_dates_converted)
 ```
 
@@ -270,17 +275,17 @@ Starting from the `lakers` dataset, create a new dataset called `gasol_hookshots
 # start with lakers dat set
 gasol_hookshots <- lakers %>% 
   
-  # filter for rows wit Pau Gasol as the player
+  # filter for rows with Pau Gasol as the player and type as hook
   filter(player == "Pau Gasol" & type == "hook") %>% 
   
-  #update date column to year month date
-  mutate(date = ymd(date)) %>% 
+  # update date column to year month date
+  mutate(date_new = ymd(date)) %>% 
   
   # create new column of month
-  mutate(month = month(date)) %>% 
+  mutate(month_new = month(date_new)) %>% 
 
   # count up number of entries per month
-  count(month)
+  count(month_new)
 
 ```
 
@@ -333,6 +338,7 @@ Note: If you add another condition within `case_when()` that is `TRUE ~ "some th
 
 # start with storms dataset
 storms_danger <- storms %>% 
+  # add column danger which populates high for status hurricane and moderate for any other status
   mutate(danger = case_when(
     status == "hurricane" ~ "high",
     status != "hurricane" ~ "moderate"
